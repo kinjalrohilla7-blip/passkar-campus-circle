@@ -10,33 +10,180 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as CommunityRouteImport } from './routes/community'
+import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as ImpactRouteImport } from './routes/impact'
+import { Route as LegacyRouteImport } from './routes/legacy'
+import { Route as MessagesRouteImport } from './routes/messages'
+import { Route as ProfileRouteImport } from './routes/profile'
+import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as SkillsRouteImport } from './routes/skills'
+import { Route as ResourcesIndexRouteImport } from './routes/resources.index'
+import { Route as ResourcesIdRouteImport } from './routes/resources.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CommunityRoute = CommunityRouteImport.update({
+  id: '/community',
+  path: '/community',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ImpactRoute = ImpactRouteImport.update({
+  id: '/impact',
+  path: '/impact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LegacyRoute = LegacyRouteImport.update({
+  id: '/legacy',
+  path: '/legacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MessagesRoute = MessagesRouteImport.update({
+  id: '/messages',
+  path: '/messages',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SkillsRoute = SkillsRouteImport.update({
+  id: '/skills',
+  path: '/skills',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResourcesIndexRoute = ResourcesIndexRouteImport.update({
+  id: '/resources/',
+  path: '/resources/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResourcesIdRoute = ResourcesIdRouteImport.update({
+  id: '/resources/$id',
+  path: '/resources/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/community': typeof CommunityRoute
+  '/dashboard': typeof DashboardRoute
+  '/impact': typeof ImpactRoute
+  '/legacy': typeof LegacyRoute
+  '/messages': typeof MessagesRoute
+  '/profile': typeof ProfileRoute
+  '/settings': typeof SettingsRoute
+  '/skills': typeof SkillsRoute
+  '/resources/$id': typeof ResourcesIdRoute
+  '/resources/': typeof ResourcesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/community': typeof CommunityRoute
+  '/dashboard': typeof DashboardRoute
+  '/impact': typeof ImpactRoute
+  '/legacy': typeof LegacyRoute
+  '/messages': typeof MessagesRoute
+  '/profile': typeof ProfileRoute
+  '/settings': typeof SettingsRoute
+  '/skills': typeof SkillsRoute
+  '/resources/$id': typeof ResourcesIdRoute
+  '/resources': typeof ResourcesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/community': typeof CommunityRoute
+  '/dashboard': typeof DashboardRoute
+  '/impact': typeof ImpactRoute
+  '/legacy': typeof LegacyRoute
+  '/messages': typeof MessagesRoute
+  '/profile': typeof ProfileRoute
+  '/settings': typeof SettingsRoute
+  '/skills': typeof SkillsRoute
+  '/resources/$id': typeof ResourcesIdRoute
+  '/resources/': typeof ResourcesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/community'
+    | '/dashboard'
+    | '/impact'
+    | '/legacy'
+    | '/messages'
+    | '/profile'
+    | '/settings'
+    | '/skills'
+    | '/resources/$id'
+    | '/resources/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/auth'
+    | '/community'
+    | '/dashboard'
+    | '/impact'
+    | '/legacy'
+    | '/messages'
+    | '/profile'
+    | '/settings'
+    | '/skills'
+    | '/resources/$id'
+    | '/resources'
+  id:
+    | '__root__'
+    | '/'
+    | '/auth'
+    | '/community'
+    | '/dashboard'
+    | '/impact'
+    | '/legacy'
+    | '/messages'
+    | '/profile'
+    | '/settings'
+    | '/skills'
+    | '/resources/$id'
+    | '/resources/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthRoute: typeof AuthRoute
+  CommunityRoute: typeof CommunityRoute
+  DashboardRoute: typeof DashboardRoute
+  ImpactRoute: typeof ImpactRoute
+  LegacyRoute: typeof LegacyRoute
+  MessagesRoute: typeof MessagesRoute
+  ProfileRoute: typeof ProfileRoute
+  SettingsRoute: typeof SettingsRoute
+  SkillsRoute: typeof SkillsRoute
+  ResourcesIdRoute: typeof ResourcesIdRoute
+  ResourcesIndexRoute: typeof ResourcesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,22 +195,100 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/community': {
+      id: '/community'
+      path: '/community'
+      fullPath: '/community'
+      preLoaderRoute: typeof CommunityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/impact': {
+      id: '/impact'
+      path: '/impact'
+      fullPath: '/impact'
+      preLoaderRoute: typeof ImpactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/legacy': {
+      id: '/legacy'
+      path: '/legacy'
+      fullPath: '/legacy'
+      preLoaderRoute: typeof LegacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/messages': {
+      id: '/messages'
+      path: '/messages'
+      fullPath: '/messages'
+      preLoaderRoute: typeof MessagesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/skills': {
+      id: '/skills'
+      path: '/skills'
+      fullPath: '/skills'
+      preLoaderRoute: typeof SkillsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/resources/': {
+      id: '/resources/'
+      path: '/resources'
+      fullPath: '/resources/'
+      preLoaderRoute: typeof ResourcesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/resources/$id': {
+      id: '/resources/$id'
+      path: '/resources/$id'
+      fullPath: '/resources/$id'
+      preLoaderRoute: typeof ResourcesIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthRoute: AuthRoute,
+  CommunityRoute: CommunityRoute,
+  DashboardRoute: DashboardRoute,
+  ImpactRoute: ImpactRoute,
+  LegacyRoute: LegacyRoute,
+  MessagesRoute: MessagesRoute,
+  ProfileRoute: ProfileRoute,
+  SettingsRoute: SettingsRoute,
+  SkillsRoute: SkillsRoute,
+  ResourcesIdRoute: ResourcesIdRoute,
+  ResourcesIndexRoute: ResourcesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
