@@ -209,7 +209,7 @@ function AuthPage() {
                 <div className="grid gap-5 sm:grid-cols-2">
                   <div className="space-y-2">
                     <Label>Branch</Label>
-                    <Select defaultValue="Computer Science &amp; Engineering">
+                    <Select defaultValue={"Computer Science & Engineering"}>
                       <SelectTrigger className="h-11 w-full rounded-xl">
                         <SelectValue placeholder="Select branch" />
                       </SelectTrigger>
