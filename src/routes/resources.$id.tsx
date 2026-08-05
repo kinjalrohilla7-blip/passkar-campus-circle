@@ -16,7 +16,7 @@ import { AppShell } from "@/components/passkar/app-shell";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Counter } from "@/components/passkar/motion-primitives";
-import { resources } from "@/lib/passkar-data";
+import { resources, type Resource } from "@/lib/passkar-data";
 
 export const Route = createFileRoute("/resources/$id")({
   loader: ({ params }) => {
@@ -49,7 +49,7 @@ export const Route = createFileRoute("/resources/$id")({
 });
 
 function ResourceDetail() {
-  const { resource } = Route.useLoaderData();
+  const { resource } = Route.useLoaderData() as { resource: Resource };
 
   const impact = [
     { icon: Coins, label: "Money saved", value: resource.moneySaved, prefix: "₹" },
