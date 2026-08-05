@@ -24,18 +24,18 @@ import { currentUser } from "@/lib/passkar-data";
 import { cn } from "@/lib/utils";
 
 const nav = [
-  { to: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
-  { to: "/resources", label: "Resources", icon: Boxes },
-  { to: "/skills", label: "Skills", icon: Sparkles },
-  { to: "/community", label: "Community", icon: Users },
-  { to: "/impact", label: "Impact", icon: LineChart },
-  { to: "/legacy", label: "Legacy Wall", icon: GraduationCap },
+  { to: "/dashboard", label: "Dashboard", icon: LayoutDashboard, badge: 0 },
+  { to: "/resources", label: "Resources", icon: Boxes, badge: 0 },
+  { to: "/skills", label: "Skills", icon: Sparkles, badge: 0 },
+  { to: "/community", label: "Community", icon: Users, badge: 0 },
+  { to: "/impact", label: "Impact", icon: LineChart, badge: 0 },
+  { to: "/legacy", label: "Legacy Wall", icon: GraduationCap, badge: 0 },
   { to: "/messages", label: "Messages", icon: MessageCircle, badge: 7 },
-  { to: "/profile", label: "Profile", icon: User },
-  { to: "/settings", label: "Settings", icon: Settings },
-] as const;
+  { to: "/profile", label: "Profile", icon: User, badge: 0 },
+  { to: "/settings", label: "Settings", icon: Settings, badge: 0 },
+];
 
-function NavList({ onNavigate }: { onNavigate?: () => void }) {
+function NavList({ onNavigate }: { onNavigate?: (() => void) | undefined }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
 
   return (
