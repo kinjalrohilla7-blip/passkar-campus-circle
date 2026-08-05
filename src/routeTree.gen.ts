@@ -13,8 +13,11 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as CommunityRouteImport } from './routes/community'
 import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as ImpactRouteImport } from './routes/impact'
 import { Route as LegacyRouteImport } from './routes/legacy'
 import { Route as MessagesRouteImport } from './routes/messages'
+import { Route as ProfileRouteImport } from './routes/profile'
+import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as SkillsRouteImport } from './routes/skills'
 import { Route as ResourcesIndexRouteImport } from './routes/resources.index'
 import { Route as ResourcesIdRouteImport } from './routes/resources.$id'
@@ -39,6 +42,11 @@ const DashboardRoute = DashboardRouteImport.update({
   path: '/dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ImpactRoute = ImpactRouteImport.update({
+  id: '/impact',
+  path: '/impact',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LegacyRoute = LegacyRouteImport.update({
   id: '/legacy',
   path: '/legacy',
@@ -47,6 +55,16 @@ const LegacyRoute = LegacyRouteImport.update({
 const MessagesRoute = MessagesRouteImport.update({
   id: '/messages',
   path: '/messages',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SkillsRoute = SkillsRouteImport.update({
@@ -70,8 +88,11 @@ export interface FileRoutesByFullPath {
   '/auth': typeof AuthRoute
   '/community': typeof CommunityRoute
   '/dashboard': typeof DashboardRoute
+  '/impact': typeof ImpactRoute
   '/legacy': typeof LegacyRoute
   '/messages': typeof MessagesRoute
+  '/profile': typeof ProfileRoute
+  '/settings': typeof SettingsRoute
   '/skills': typeof SkillsRoute
   '/resources/$id': typeof ResourcesIdRoute
   '/resources/': typeof ResourcesIndexRoute
@@ -81,8 +102,11 @@ export interface FileRoutesByTo {
   '/auth': typeof AuthRoute
   '/community': typeof CommunityRoute
   '/dashboard': typeof DashboardRoute
+  '/impact': typeof ImpactRoute
   '/legacy': typeof LegacyRoute
   '/messages': typeof MessagesRoute
+  '/profile': typeof ProfileRoute
+  '/settings': typeof SettingsRoute
   '/skills': typeof SkillsRoute
   '/resources/$id': typeof ResourcesIdRoute
   '/resources': typeof ResourcesIndexRoute
@@ -93,8 +117,11 @@ export interface FileRoutesById {
   '/auth': typeof AuthRoute
   '/community': typeof CommunityRoute
   '/dashboard': typeof DashboardRoute
+  '/impact': typeof ImpactRoute
   '/legacy': typeof LegacyRoute
   '/messages': typeof MessagesRoute
+  '/profile': typeof ProfileRoute
+  '/settings': typeof SettingsRoute
   '/skills': typeof SkillsRoute
   '/resources/$id': typeof ResourcesIdRoute
   '/resources/': typeof ResourcesIndexRoute
@@ -106,8 +133,11 @@ export interface FileRouteTypes {
     | '/auth'
     | '/community'
     | '/dashboard'
+    | '/impact'
     | '/legacy'
     | '/messages'
+    | '/profile'
+    | '/settings'
     | '/skills'
     | '/resources/$id'
     | '/resources/'
@@ -117,8 +147,11 @@ export interface FileRouteTypes {
     | '/auth'
     | '/community'
     | '/dashboard'
+    | '/impact'
     | '/legacy'
     | '/messages'
+    | '/profile'
+    | '/settings'
     | '/skills'
     | '/resources/$id'
     | '/resources'
@@ -128,8 +161,11 @@ export interface FileRouteTypes {
     | '/auth'
     | '/community'
     | '/dashboard'
+    | '/impact'
     | '/legacy'
     | '/messages'
+    | '/profile'
+    | '/settings'
     | '/skills'
     | '/resources/$id'
     | '/resources/'
@@ -140,8 +176,11 @@ export interface RootRouteChildren {
   AuthRoute: typeof AuthRoute
   CommunityRoute: typeof CommunityRoute
   DashboardRoute: typeof DashboardRoute
+  ImpactRoute: typeof ImpactRoute
   LegacyRoute: typeof LegacyRoute
   MessagesRoute: typeof MessagesRoute
+  ProfileRoute: typeof ProfileRoute
+  SettingsRoute: typeof SettingsRoute
   SkillsRoute: typeof SkillsRoute
   ResourcesIdRoute: typeof ResourcesIdRoute
   ResourcesIndexRoute: typeof ResourcesIndexRoute
@@ -177,6 +216,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/impact': {
+      id: '/impact'
+      path: '/impact'
+      fullPath: '/impact'
+      preLoaderRoute: typeof ImpactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/legacy': {
       id: '/legacy'
       path: '/legacy'
@@ -189,6 +235,20 @@ declare module '@tanstack/react-router' {
       path: '/messages'
       fullPath: '/messages'
       preLoaderRoute: typeof MessagesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/skills': {
@@ -220,8 +280,11 @@ const rootRouteChildren: RootRouteChildren = {
   AuthRoute: AuthRoute,
   CommunityRoute: CommunityRoute,
   DashboardRoute: DashboardRoute,
+  ImpactRoute: ImpactRoute,
   LegacyRoute: LegacyRoute,
   MessagesRoute: MessagesRoute,
+  ProfileRoute: ProfileRoute,
+  SettingsRoute: SettingsRoute,
   SkillsRoute: SkillsRoute,
   ResourcesIdRoute: ResourcesIdRoute,
   ResourcesIndexRoute: ResourcesIndexRoute,
