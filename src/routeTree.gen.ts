@@ -13,6 +13,8 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as CommunityRouteImport } from './routes/community'
 import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as LegacyRouteImport } from './routes/legacy'
+import { Route as MessagesRouteImport } from './routes/messages'
 import { Route as SkillsRouteImport } from './routes/skills'
 import { Route as ResourcesIndexRouteImport } from './routes/resources.index'
 import { Route as ResourcesIdRouteImport } from './routes/resources.$id'
@@ -37,6 +39,16 @@ const DashboardRoute = DashboardRouteImport.update({
   path: '/dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LegacyRoute = LegacyRouteImport.update({
+  id: '/legacy',
+  path: '/legacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MessagesRoute = MessagesRouteImport.update({
+  id: '/messages',
+  path: '/messages',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SkillsRoute = SkillsRouteImport.update({
   id: '/skills',
   path: '/skills',
@@ -58,6 +70,8 @@ export interface FileRoutesByFullPath {
   '/auth': typeof AuthRoute
   '/community': typeof CommunityRoute
   '/dashboard': typeof DashboardRoute
+  '/legacy': typeof LegacyRoute
+  '/messages': typeof MessagesRoute
   '/skills': typeof SkillsRoute
   '/resources/$id': typeof ResourcesIdRoute
   '/resources/': typeof ResourcesIndexRoute
@@ -67,6 +81,8 @@ export interface FileRoutesByTo {
   '/auth': typeof AuthRoute
   '/community': typeof CommunityRoute
   '/dashboard': typeof DashboardRoute
+  '/legacy': typeof LegacyRoute
+  '/messages': typeof MessagesRoute
   '/skills': typeof SkillsRoute
   '/resources/$id': typeof ResourcesIdRoute
   '/resources': typeof ResourcesIndexRoute
@@ -77,6 +93,8 @@ export interface FileRoutesById {
   '/auth': typeof AuthRoute
   '/community': typeof CommunityRoute
   '/dashboard': typeof DashboardRoute
+  '/legacy': typeof LegacyRoute
+  '/messages': typeof MessagesRoute
   '/skills': typeof SkillsRoute
   '/resources/$id': typeof ResourcesIdRoute
   '/resources/': typeof ResourcesIndexRoute
@@ -88,6 +106,8 @@ export interface FileRouteTypes {
     | '/auth'
     | '/community'
     | '/dashboard'
+    | '/legacy'
+    | '/messages'
     | '/skills'
     | '/resources/$id'
     | '/resources/'
@@ -97,6 +117,8 @@ export interface FileRouteTypes {
     | '/auth'
     | '/community'
     | '/dashboard'
+    | '/legacy'
+    | '/messages'
     | '/skills'
     | '/resources/$id'
     | '/resources'
@@ -106,6 +128,8 @@ export interface FileRouteTypes {
     | '/auth'
     | '/community'
     | '/dashboard'
+    | '/legacy'
+    | '/messages'
     | '/skills'
     | '/resources/$id'
     | '/resources/'
@@ -116,6 +140,8 @@ export interface RootRouteChildren {
   AuthRoute: typeof AuthRoute
   CommunityRoute: typeof CommunityRoute
   DashboardRoute: typeof DashboardRoute
+  LegacyRoute: typeof LegacyRoute
+  MessagesRoute: typeof MessagesRoute
   SkillsRoute: typeof SkillsRoute
   ResourcesIdRoute: typeof ResourcesIdRoute
   ResourcesIndexRoute: typeof ResourcesIndexRoute
@@ -151,6 +177,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/legacy': {
+      id: '/legacy'
+      path: '/legacy'
+      fullPath: '/legacy'
+      preLoaderRoute: typeof LegacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/messages': {
+      id: '/messages'
+      path: '/messages'
+      fullPath: '/messages'
+      preLoaderRoute: typeof MessagesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/skills': {
       id: '/skills'
       path: '/skills'
@@ -180,6 +220,8 @@ const rootRouteChildren: RootRouteChildren = {
   AuthRoute: AuthRoute,
   CommunityRoute: CommunityRoute,
   DashboardRoute: DashboardRoute,
+  LegacyRoute: LegacyRoute,
+  MessagesRoute: MessagesRoute,
   SkillsRoute: SkillsRoute,
   ResourcesIdRoute: ResourcesIdRoute,
   ResourcesIndexRoute: ResourcesIndexRoute,
