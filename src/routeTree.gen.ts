@@ -11,7 +11,9 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthRouteImport } from './routes/auth'
+import { Route as CommunityRouteImport } from './routes/community'
 import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as SkillsRouteImport } from './routes/skills'
 import { Route as ResourcesIndexRouteImport } from './routes/resources.index'
 import { Route as ResourcesIdRouteImport } from './routes/resources.$id'
 
@@ -25,9 +27,19 @@ const AuthRoute = AuthRouteImport.update({
   path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CommunityRoute = CommunityRouteImport.update({
+  id: '/community',
+  path: '/community',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DashboardRoute = DashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SkillsRoute = SkillsRouteImport.update({
+  id: '/skills',
+  path: '/skills',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ResourcesIndexRoute = ResourcesIndexRouteImport.update({
@@ -44,14 +56,18 @@ const ResourcesIdRoute = ResourcesIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/community': typeof CommunityRoute
   '/dashboard': typeof DashboardRoute
+  '/skills': typeof SkillsRoute
   '/resources/$id': typeof ResourcesIdRoute
   '/resources/': typeof ResourcesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/community': typeof CommunityRoute
   '/dashboard': typeof DashboardRoute
+  '/skills': typeof SkillsRoute
   '/resources/$id': typeof ResourcesIdRoute
   '/resources': typeof ResourcesIndexRoute
 }
@@ -59,23 +75,48 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/community': typeof CommunityRoute
   '/dashboard': typeof DashboardRoute
+  '/skills': typeof SkillsRoute
   '/resources/$id': typeof ResourcesIdRoute
   '/resources/': typeof ResourcesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/auth' | '/dashboard' | '/resources/$id' | '/resources/'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/community'
+    | '/dashboard'
+    | '/skills'
+    | '/resources/$id'
+    | '/resources/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auth' | '/dashboard' | '/resources/$id' | '/resources'
+  to:
+    | '/'
+    | '/auth'
+    | '/community'
+    | '/dashboard'
+    | '/skills'
+    | '/resources/$id'
+    | '/resources'
   id:
-    '__root__' | '/' | '/auth' | '/dashboard' | '/resources/$id' | '/resources/'
+    | '__root__'
+    | '/'
+    | '/auth'
+    | '/community'
+    | '/dashboard'
+    | '/skills'
+    | '/resources/$id'
+    | '/resources/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthRoute: typeof AuthRoute
+  CommunityRoute: typeof CommunityRoute
   DashboardRoute: typeof DashboardRoute
+  SkillsRoute: typeof SkillsRoute
   ResourcesIdRoute: typeof ResourcesIdRoute
   ResourcesIndexRoute: typeof ResourcesIndexRoute
 }
@@ -96,11 +137,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/community': {
+      id: '/community'
+      path: '/community'
+      fullPath: '/community'
+      preLoaderRoute: typeof CommunityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/dashboard': {
       id: '/dashboard'
       path: '/dashboard'
       fullPath: '/dashboard'
       preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/skills': {
+      id: '/skills'
+      path: '/skills'
+      fullPath: '/skills'
+      preLoaderRoute: typeof SkillsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/resources/': {
@@ -123,7 +178,9 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthRoute: AuthRoute,
+  CommunityRoute: CommunityRoute,
   DashboardRoute: DashboardRoute,
+  SkillsRoute: SkillsRoute,
   ResourcesIdRoute: ResourcesIdRoute,
   ResourcesIndexRoute: ResourcesIndexRoute,
 }
