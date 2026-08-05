@@ -209,7 +209,7 @@ function AuthPage() {
                 <div className="grid gap-5 sm:grid-cols-2">
                   <div className="space-y-2">
                     <Label>Branch</Label>
-                    <Select defaultValue={branches[0]}>
+                    <Select defaultValue="Computer Science &amp; Engineering">
                       <SelectTrigger className="h-11 w-full rounded-xl">
                         <SelectValue placeholder="Select branch" />
                       </SelectTrigger>
@@ -243,9 +243,9 @@ function AuthPage() {
                   <Label>Where do you stay?</Label>
                   <RadioGroup defaultValue="hosteller" className="grid grid-cols-2 gap-3">
                     {[
-                      ["hosteller", "Hosteller"],
-                      ["day", "Day Scholar"],
-                    ].map(([value, label]) => (
+                      { value: "hosteller", label: "Hosteller" },
+                      { value: "day", label: "Day Scholar" },
+                    ].map(({ value, label }) => (
                       <Label
                         key={value}
                         htmlFor={value}
