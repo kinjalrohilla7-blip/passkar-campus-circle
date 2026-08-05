@@ -54,69 +54,67 @@ const travellers = [
 
 function LoopAnimation() {
   return (
-    <div className="relative mx-auto aspect-[5/6] w-full max-w-[26rem]">
-      <svg viewBox="0 0 300 460" className="h-full w-full" aria-hidden="true">
-        <motion.path
-          d={LOOP_PATH}
-          fill="none"
-          stroke="currentColor"
-          className="text-forest/15"
-          strokeWidth={26}
-          strokeLinecap="round"
-        />
-        <motion.path
-          d={LOOP_PATH}
-          fill="none"
-          stroke="currentColor"
-          className="text-forest"
-          strokeWidth={4}
-          strokeLinecap="round"
-          strokeDasharray="10 16"
-          initial={{ pathLength: 0 }}
-          animate={{ pathLength: 1 }}
-          transition={{ duration: 2.6, ease: [0.22, 1, 0.36, 1] }}
-        />
-        <motion.path
-          d="M 176 320 L 150 340 L 176 360"
-          fill="none"
-          stroke="currentColor"
-          className="text-terracotta"
-          strokeWidth={9}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          initial={{ opacity: 0, scale: 0.7 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 2.4, duration: 0.6 }}
-          style={{ transformOrigin: "160px 340px" }}
-        />
-      </svg>
+    <div className="flex w-full justify-center">
+      <div className="relative h-[460px] w-[300px] origin-center scale-[0.78] sm:scale-90 lg:scale-100">
+        <svg viewBox="0 0 300 460" className="absolute inset-0 h-full w-full" aria-hidden="true">
+          <path
+            d={LOOP_PATH}
+            fill="none"
+            stroke="currentColor"
+            className="text-forest/12"
+            strokeWidth={30}
+            strokeLinecap="round"
+          />
+          <motion.path
+            d={LOOP_PATH}
+            fill="none"
+            stroke="currentColor"
+            className="text-forest"
+            strokeWidth={4}
+            strokeLinecap="round"
+            strokeDasharray="10 16"
+            initial={{ pathLength: 0 }}
+            animate={{ pathLength: 1 }}
+            transition={{ duration: 2.6, ease: [0.22, 1, 0.36, 1] }}
+          />
+          <motion.path
+            d="M 178 318 L 150 340 L 178 362"
+            fill="none"
+            stroke="currentColor"
+            className="text-terracotta"
+            strokeWidth={9}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 2.4, duration: 0.6 }}
+          />
+        </svg>
 
-      {travellers.map((t) => (
-        <motion.div
-          key={t.label}
-          className="absolute top-0 left-0 h-[3.25rem] w-[3.25rem]"
-          style={{
-            offsetPath: `path("${LOOP_PATH}")`,
-            offsetRotate: "0deg",
-            scale: "calc(100 / 300)",
-          }}
-          initial={{ offsetDistance: "0%" }}
-          animate={{ offsetDistance: "100%" }}
-          transition={{
-            duration: 13.2,
-            delay: t.delay,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-        >
-          <div className="grid h-full w-full origin-top-left scale-[calc(100vw/100vw)] place-items-center rounded-2xl border border-border bg-card shadow-soft">
-            <t.icon className="h-6 w-6 text-forest" strokeWidth={1.6} />
-          </div>
-        </motion.div>
-      ))}
+        {travellers.map((t) => (
+          <motion.div
+            key={t.label}
+            className="absolute top-0 left-0 -ml-6 -mt-6 grid h-12 w-12 place-items-center rounded-2xl border border-border bg-card shadow-soft"
+            style={{ offsetPath: `path("${LOOP_PATH}")`, offsetRotate: "0deg" }}
+            initial={{ offsetDistance: "0%" }}
+            animate={{ offsetDistance: "100%" }}
+            transition={{ duration: 13.2, delay: t.delay, repeat: Infinity, ease: "linear" }}
+          >
+            <t.icon className="h-5 w-5 text-forest" strokeWidth={1.6} />
+          </motion.div>
+        ))}
+
+        <div className="absolute right-0 bottom-2 max-w-[9.5rem] text-right">
+          <p className="eyebrow">Now travelling</p>
+          <p className="mt-1 text-sm text-muted-foreground">
+            six objects, one loop, zero landfill
+          </p>
+        </div>
+      </div>
     </div>
   );
 }
+
 
 function Landing() {
   return (
